@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+    <!--读属性文件-->
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="controller"/>
+    <!--配置文件的方式，处理异常-->
+    <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" >-->
+        <!--<property name="exceptionMappings">-->
+            <!--<props>-->
+                <!--&lt;!&ndash;key表示定义异常类型    error为页面名称，写什么都行&ndash;&gt;-->
+                <!--<prop key="java.lang.RuntimeException">web/error</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--配置视图解析-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/web/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--这里path表示拦截路径，如果拦截所有为/**-->
+            <mvc:mapping path="/**"/>
+            <!--excluede是表示不拦截的url-->
+            <mvc:exclude-mapping path="/login.do"/>
+            <mvc:exclude-mapping path="/showIndex.do"/>
+            <mvc:exclude-mapping path="/showLogin.do"/>
+            <mvc:exclude-mapping path="/showIndex.do"/>
+            <!--实例化拦截器对象-->
+            <bean class="interceptor.LoginInterceptor"/>
+
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>
