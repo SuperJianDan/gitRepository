@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace表示命名空间，值必须为包括包名的完整接口名称  以接口代替实现类，mybatis自动生成实现类-->
+<mapper namespace="mapper.ForumMapper">
+    <select id="selectIndexArticle" resultType="bean.Data">
+        select * from content order by id desc limit 7;
+    </select>
+    <select id="selectIndexArticleCenter" resultType="bean.Data">
+        select * from contentCenter order by id desc limit 7;
+    </select>
+    <select id="selectHelp" resultType="bean.Help">
+        select * from help 
+    </select>
+    <select id="selectQuickLink" resultType="bean.QuickLink">
+        select * from quickLink
+    </select>
+    <select id="selectTagCloud" resultType="bean.TagCloud">
+        select * from tagCloud
+    </select>
+    
+
+    <!--<insert id="insertUser" parameterType="bean.User">-->
+    <!--insert into t_user(-->
+    <!--username,-->
+    <!--password,-->
+    <!--email,-->
+    <!--phone,-->
+    <!--created_user,-->
+    <!--created_time,-->
+    <!--modified_user,-->
+    <!--modified_time-->
+    <!--) values (-->
+    <!--#{username},-->
+    <!--#{password},-->
+    <!--#{email},-->
+    <!--#{phone},-->
+    <!--#{image},-->
+    <!--#{gender},-->
+    <!--#{createdUser},-->
+    <!--#{createdTime},-->
+    <!--#{modifiedUser},-->
+    <!--#{modifiedTime}-->
+    <!--)-->
+    <!--</insert>-->
+    <!--<insert id="insetTest" parameterType="bean.User">-->
+    <!--insert into t_user-->
+    <!--(username,-->
+    <!--password,-->
+    <!--email,-->
+    <!--phone) values (-->
+    <!--#{username},-->
+    <!--#{password},-->
+    <!--#{email},-->
+    <!--#{phone}-->
+    <!--)-->
+    <!--</insert>-->
+    <!--<select id="selectByUsername" parameterType="bean.User" resultType="bean.User">-->
+    <!--select * from t_user where username=#{username};-->
+    <!--</select>-->
+    <!--<select id="selectByEmail" resultType="java.lang.Integer">-->
+    <!--select count(*) from t_user where email=#{email}-->
+    <!--</select>-->
+    <!--<select id="selectByPhone" resultType="java.lang.Integer">-->
+    <!--select count(*) from t_user where phone=#{phone}-->
+    <!--</select>-->
+    <!--<update id="updateDept" parameterType="ssm.bean.Dept">-->
+    <!--update dept set dept_name=#{deptName},dept_loc=#{deptLoc} where id=#{id}-->
+    <!--</update>-->
+    <!--<delete id="deleteDept" >-->
+    <!--delete from dept where id=#{id}-->
+    <!--</delete>-->
+
+    <!--<select id="selectOne" resultType="ssm.bean.Dept">-->
+    <!--select id,dept_name deptName,dept_loc deptLoc from dept where id=#{id}-->
+    <!--</select>-->
+
+    <!--<select id="selectAll" resultType="ssm.bean.Dept">-->
+    <!--select id,dept_name deptName,dept_loc deptLoc from dept-->
+    <!--</select>-->
+</mapper>
+
+
+
+
+
